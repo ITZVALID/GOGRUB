@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Sets the character encoding -->
+  <meta charset="UTF-8">
+
+  <!-- Helps the webpage display correctly on different screen sizes -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Sets the title shown in the browser tab -->
+  <title>GOGRUB</title>
+
+  <!-- Connects the CSS file -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Connects the JavaScript file -->
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+<!-- Main container holding the sidebar and the active screen -->
+  <div class="app-container">
+
+    <!-- Side Navigation Bar -->
+    <nav class="side-nav">
+      <h2>GOGRUB</h2>
+      <!-- Buttons call showScreen() with the matching section ID -->
+      <button onclick="showScreen('homeScreen')">Home</button>
+      <button onclick="showScreen('cartScreen')">Cart</button>
+      <button onclick="showScreen('locationScreen')">Location</button>
+    </nav>
+
+    <!-- Main Screen Display Area -->
+    <main class="screen-area">
+
+      <!-- Slide 1: Home Screen -->
+      <section id="homeScreen" class="screen">
+        <h1>Welcome to GOGRUB</h1>
+        <p>Select Location to browse menus and place an order.</p>
+      </section>
+
+      <!-- Slide 2: Location Screen -->
+      <section id="locationScreen" class="screen hidden">
+        <h1>Choose a Restaurant</h1>
+
+        <!-- Container holding the restaurant choice buttons -->
+        <div class="location-buttons">
+          <!-- Clicking opens the Burger King Menu screen -->
+          <button class="restaurant-btn" onclick="showScreen('bkMenuScreen')">Burger King</button>
+
+          <!-- Clicking opens the Sun Pizza Menu screen -->
+          <button class="restaurant-btn" onclick="showScreen('sunPizzaMenuScreen')">Sun Pizza</button>
+        </div>
+      </section>
+
+      <!-- Slide 3: Cart Screen -->
+      <section id="cartScreen" class="screen hidden">
+        <h1>Your Cart</h1>
+
+        <!-- JavaScript will insert the list of added items here -->
+        <div id="cartItems">
+          <p>Your cart is empty.</p>
+        </div>
+
+        <!-- Displays the total price of all items in the cart -->
+        <h3 id="cartTotal">Total: $0.00</h3>
+      </section>
+      <!-- Calls checkoutOrder() when clicked -->
+        <button id="checkoutBtn" onclick="checkoutOrder()">Checkout</button>
+
+     <!-- Slide 4: Burger King Menu Screen -->
+      <section id="bkMenuScreen" class="screen hidden">
+        <h1>Burger King Menu</h1>
+
+        <!-- Menu Item 1: Burger -->
+        <div class="menu-item">
+          <div>
+            <h3>Whopper Burger</h3>
+            <p>$5.99</p>
+          </div>
+          <!-- Calls addToCart() with the item name and price -->
+          <button onclick="addToCart('Whopper Burger', 5.99)">Add to Cart</button>
+        </div>
+
+        <!-- Menu Item 2: Fries -->
+        <div class="menu-item">
+          <div>
+            <h3>French Fries</h3>
+            <p>$2.49</p>
+          </div>
+          <button onclick="addToCart('French Fries', 2.49)">Add to Cart</button>
+        </div>
+      </section>
+
+      <!-- Slide 5: Sun Pizza Menu Screen -->
+      <section id="sunPizzaMenuScreen" class="screen hidden">
+        <h1>Sun Pizza Menu</h1>
+
+        <!-- Menu Item 1: Cheese Pizza -->
+        <div class="menu-item">
+          <div>
+            <h3>Cheese Pizza Slice</h3>
+            <p>$3.50</p>
+          </div>
+          <button onclick="addToCart('Cheese Pizza Slice', 3.50)">Add to Cart</button>
+        </div>
+
+        <!-- Menu Item 2: Pepperoni Pizza -->
+        <div class="menu-item">
+          <div>
+            <h3>Pepperoni Pizza Slice</h3>
+            <p>$4.00</p>
+          </div>
+          <button onclick="addToCart('Pepperoni Pizza Slice', 4.00)">Add to Cart</button>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+</body>
+</html>
